@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HRL X MacOS 27 V2.0 · Master Apple Design System &amp; Desktop Canvas</title>
+  
+  <meta name="description" content="Official Apple Human Interface Guidelines (HIG) and macOS 27 Liquid Glassmorphism design system library by HRL International.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Core Apple macOS 27 Stylesheets -->
+  <link rel="stylesheet" href="css/apple-tokens.css">
+  <link rel="stylesheet" href="css/apple-macos-27.css">
+  <link rel="stylesheet" href="css/desktop.css">
+
+  <style>
+    /* Specific Showcase Enhancements */
+    .component-section {
+      margin-bottom: 36px;
+    }
+    .component-header {
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--apple-divider);
+    }
+    .component-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .code-preview-box {
+      background: #000000;
+      border: 1px solid var(--apple-border);
+      border-radius: var(--apple-radius-sm);
+      padding: 12px 14px;
+      font-family: var(--apple-font-mono);
+      font-size: 11.5px;
+      color: #38bdf8;
+      overflow-x: auto;
+      margin-top: 10px;
+    }
+    .color-swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+    }
+    .color-swatch-card {
+      background: var(--apple-surface);
+      border: 1px solid var(--apple-border);
+      border-radius: var(--apple-radius-md);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .color-pill-sample {
+      height: 38px;
+      border-radius: 8px;
+      width: 100%;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body class="macos-desktop">
+
+  <!-- ========================================================= -->
+  <!-- 1. TOP GLOBAL MACOS 27 MENU BAR                           -->
+  <!-- ========================================================= -->
+  <header class="macos-menubar" role="navigation" aria-label="macOS Global Menu Bar">
+    <div class="menubar-left">
+      <!-- Apple Logo Dropdown -->
+      <div class="menubar-item apple-logo-item" data-menu-target="appleDropdown" title="Apple Menu">
+        <svg viewBox="0 0 170 170">
+          <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.7-7.85-12.01-14.42-5.72-8.7-10.23-18.9-13.53-30.61-3.3-11.71-4.96-22.75-4.96-33.12 0-14.73 3.65-26.79 10.96-36.19 7.31-9.4 16.38-14.19 27.21-14.39 4.36 0 9.28 1.13 14.76 3.38 5.48 2.25 9.17 3.44 11.09 3.56 1.83-.12 5.67-1.37 11.53-3.74 5.86-2.37 10.63-3.44 14.32-3.21 11.22.61 20.31 4.78 27.28 12.52-9.76 5.89-14.54 14.15-14.35 24.78.2 8.66 3.51 15.82 9.94 21.49 6.43 5.66 14.07 8.92 22.92 9.77-2.3 6.96-5.15 14.13-8.56 21.52zM119.22 31.84c0-7.39 2.68-14.28 8.04-20.67 5.36-6.39 12-10.45 19.92-12.17.2 1.43.3 2.76.3 3.99 0 7.29-2.82 14.24-8.46 20.85-5.64 6.61-12.55 10.65-20.73 12.12-.2-1.43-.3-2.76-.3-4.12z"/>
+        </svg>
+      </div>
+
+      <div class="menubar-item app-name-active" data-menu-target="appDropdown">HRL Design OS</div>
+      <div class="menubar-item" data-menu-target="fileDropdown">File</div>
+      <div class="menubar-item" data-menu-target="editDropdown">Edit</div>
+      <div class="menubar-item" data-menu-target="viewDropdown">View</div>
+      <div class="menubar-item">Window</div>
+      <div class="menubar-item">Help</div>
+    </div>
+
+    <div class="menubar-right">
+      <!-- Theme Switcher -->
+      <div class="menubar-item" id="themeToggleBtn" title="Toggle Dark/Light Mode">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </div>
+
+      <!-- Battery Indicator -->
+      <div class="menubar-item" title="100% Charged">
+        <svg width="18" height="12" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="1" y="1" width="19" height="12" rx="3"/>
+          <rect x="3" y="3" width="15" height="8" rx="1.5" fill="currentColor"/>
+          <path d="M22 5v4" stroke-linecap="round"/>
+        </svg>
+        <span style="font-size: 11px;">100%</span>
+      </div>
+
+      <!-- Wi-Fi -->
+      <div class="menubar-item" title="Wi-Fi: Connected to HRL UltraNet">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+          <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+          <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+          <line x1="12" y1="20" x2="12.01" y2="20" stroke-width="3"/>
+        </svg>
+      </div>
+
+      <!-- Spotlight Search Trigger -->
+      <div class="menubar-item" id="spotlightBtn" title="Spotlight Search (⌘ + Space)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </div>
+
+      <!-- Control Center Trigger -->
+      <div class="menubar-item" id="controlCenterBtn" title="Control Center">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="4" width="20" height="6" rx="3"/>
+          <circle cx="8" cy="7" r="2" fill="currentColor"/>
+          <rect x="2" y="14" width="20" height="6" rx="3"/>
+          <circle cx="16" cy="17" r="2" fill="currentColor"/>
+        </svg>
+      </div>
+
+      <!-- Live Clock -->
+      <div class="menubar-item" id="menubarClock" style="font-weight: 600;">Mon Oct 19 12:45 PM</div>
+    </div>
+  </header>
+
+  <!-- ========================================================= -->
+  <!-- 2. DROPDOWN MENUS (APPLE & APPS)                          -->
+  <!-- ========================================================= -->
+  <div class="apple-dropdown-menu" id="appleDropdown">
+    <div class="dropdown-item"><strong>About This Mac (macOS 27)</strong></div>
+    <div class="dropdown-divider"></div>
+    <div class="dropdown-item">System Settings... <span class="shortcut-key">⌘,</span></div>
+    <div class="dropdown-item">App Store...</div>
+    <div class="dropdown-divider"></div>
+    <div class="dropdown-item">Recent Projects &gt;</div>
+    <div class="dropdown-divider"></div>
+    <div class="dropdown-item">Force Quit... <span class="shortcut-key">⌥⌘⎋</span></div>
+    <div class="dropdown-divider"></div>
+    <div class="dropdown-item">Sleep</div>
+    <div class="dropdown-item">Restart...</div>
+    <div class="dropdown-item">Shut Down...</div>
+    <div class="dropdown-divider"></div>
+    <div class="dropdown-item">Lock Screen <span class="shortcut-key">⌃⌘Q</span></div>
+  </div>
+
+  <div class="apple-dropdown-menu" id="appDropdown">
+    <div class="dropdown-item"><strong>About HRL Design OS</strong></div>
+    <div class="dropdown-divider"></div>
+    <div class="dropdown-item">Preferences... <span class="shortcut-key">⌘,</span></div>
+    <div class="dropdown-divider"></div>
+    <div class="dropdown-item">Hide HRL Design OS <span class="shortcut-key">⌘H</span></div>
+    <div class="dropdown-item">Hide Others <span class="shortcut-key">⌥⌘H</span></div>
+    <div class="dropdown-item">Show All</div>
+    <div class="dropdown-divider"></div>
+    <div class="dropdown-item">Quit HRL Design OS <span class="shortcut-key">⌘Q</span></div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- 3. LIQUID GLASS CONTROL CENTER POPUP                      -->
+  <!-- ========================================================= -->
+  <div class="control-center-popup" id="controlCenterPopup">
+    <div class="cc-grid-2">
+      <div class="cc-card active">
+        <div class="cc-icon-circle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><line x1="12" y1="20" x2="12.01" y2="20" stroke-width="3"/></svg>
+        </div>
+        <div>
+          <div class="cc-card-title">Wi-Fi</div>
+          <div class="cc-card-sub">UltraNet 6E</div>
+        </div>
+      </div>
+
+      <div class="cc-card active">
+        <div class="cc-icon-circle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 7 10 10-5 5V2l5 5L7 17"/></svg>
+        </div>
+        <div>
+          <div class="cc-card-title">Bluetooth</div>
+          <div class="cc-card-sub">AirPods Max</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sliders -->
+    <div class="cc-slider-card">
+      <div class="cc-slider-title">
+        <span>Display Brightness</span>
+        <span style="opacity: 0.7;">85%</span>
+      </div>
+      <input type="range" class="cc-range-slider" min="0" max="100" value="85">
+    </div>
+
+    <div class="cc-slider-card">
+      <div class="cc-slider-title">
+        <span>Sound Volume</span>
+        <span style="opacity: 0.7;">70%</span>
+      </div>
+      <input type="range" class="cc-range-slider" min="0" max="100" value="70">
+    </div>
+
+    <!-- Media Player -->
+    <div class="cc-card" style="width: 100%;">
+      <img src="assets/logo.png" alt="HRL Logo" style="width: 32px; height: 32px; object-fit: contain; border-radius: 6px;" />
+      <div style="flex: 1;">
+        <div class="cc-card-title">HRL International Media</div>
+        <div class="cc-card-sub">RTX-LocalAI Audio Engine · 1,538 tok/s</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- 4. SPOTLIGHT SEARCH OVERLAY                               -->
+  <!-- ========================================================= -->
+  <div class="spotlight-modal" id="spotlightModal">
+    <div class="spotlight-input-row">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text" class="spotlight-input" id="spotlightInput" placeholder="Spotlight Search (apps, designs, components, tokens)..." autofocus autocomplete="off" />
+    </div>
+    <div class="spotlight-results" id="spotlightResults">
+      <div class="spotlight-result-item selected">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        <div>
+          <div style="font-weight: 600;">Apple macOS 27 Component Gallery</div>
+          <div style="font-size: 11px; opacity: 0.7;">Application · Design System</div>
+        </div>
+      </div>
+      <div class="spotlight-result-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d1002d" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <div>
+          <div style="font-weight: 600;">HRL International Master Website</div>
+          <div style="font-size: 11px; opacity: 0.7;">Production Portal · Mangalore, India</div>
+        </div>
+      </div>
+      <div class="spotlight-result-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <div>
+          <div style="font-weight: 600;">RTX-LocalAI High-Throughput Engine</div>
+          <div style="font-size: 11px; opacity: 0.7;">1,538+ tokens/sec CUDA neural inference</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- 5. MAIN WINDOW: APPLE MACOS 27 DESIGN SYSTEM GALLERY      -->
+  <!-- ========================================================= -->
+  <main class="apple-window active" id="windowGallery" style="position: fixed; top: 60px; left: 80px; width: 920px; height: 600px; z-index: 100;">
+    
+    <!-- Titlebar -->
+    <div class="apple-titlebar">
+      <div class="apple-traffic-lights">
+        <div class="traffic-light close" title="Close Window"></div>
+        <div class="traffic-light minimize" title="Minimize Window"></div>
+        <div class="traffic-light expand" title="Zoom / Expand Window"></div>
+      </div>
+
+      <div class="apple-window-title">
+        <img src="assets/logo.png" alt="HRL Logo" style="height: 16px; width: auto;" />
+        <span>HRL X MacOS 27 V2.0 · Apple Design System Explorer</span>
+      </div>
+
+      <!-- Window Action Bar -->
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <span class="apple-badge blue">v2.0 Liquid Glass</span>
+        <span class="apple-badge crimson">HRL Master</span>
+      </div>
+    </div>
+
+    <!-- Window Body with Sidebar + Content -->
+    <div class="apple-window-body">
+      
+      <!-- Frosted Sidebar -->
+      <aside class="apple-sidebar" role="tablist">
+        <span class="apple-sidebar-header">Design Library</span>
+        <div class="apple-sidebar-item active" onclick="switchTab('tab-overview')">Overview &amp; Tokens</div>
+        <div class="apple-sidebar-item" onclick="switchTab('tab-buttons')">Buttons &amp; Badges</div>
+        <div class="apple-sidebar-item" onclick="switchTab('tab-windows')">Glass Windows &amp; Cards</div>
+        <div class="apple-sidebar-item" onclick="switchTab('tab-controls')">Controls &amp; Inputs</div>
+        <div class="apple-sidebar-item" onclick="switchTab('tab-typography')">SF Pro Typography</div>
+        
+        <span class="apple-sidebar-header" style="margin-top: 14px;">Integration</span>
+        <div class="apple-sidebar-item" onclick="switchTab('tab-code')">Copy HTML/CSS Code</div>
+      </aside>
+
+      <!-- Content Canvas -->
+      <div class="apple-window-content">
+        
+        <!-- PANE 1: OVERVIEW & DESIGN TOKENS -->
+        <div id="tab-overview" class="gallery-pane">
+          <div class="component-header">
+            <h2 class="apple-title-2">Apple macOS 27 Design Tokens</h2>
+            <p class="apple-body">Built to Apple's exacting Human Interface Guidelines (HIG) with multi-layered specular borders and liquid backdrop blur.</p>
+          </div>
+
+          <div class="component-section">
+            <h3 class="apple-headline" style="margin-bottom: 12px;">System Color Matrix</h3>
+            <div class="color-swatch-grid">
+              <div class="color-swatch-card">
+                <div class="color-pill-sample" style="background: var(--apple-blue);"></div>
+                <div style="font-weight: 600; font-size: 12px;">Apple Blue</div>
+                <div class="apple-mono" style="font-size: 11px; opacity: 0.7;">#0071E3</div>
+              </div>
+              <div class="color-swatch-card">
+                <div class="color-pill-sample" style="background: var(--hrl-crimson);"></div>
+                <div style="font-weight: 600; font-size: 12px;">HRL Crimson</div>
+                <div class="apple-mono" style="font-size: 11px; opacity: 0.7;">#D1002D</div>
+              </div>
+              <div class="color-swatch-card">
+                <div class="color-pill-sample" style="background: var(--apple-green);"></div>
+                <div style="font-weight: 600; font-size: 12px;">System Green</div>
+                <div class="apple-mono" style="font-size: 11px; opacity: 0.7;">#34C759</div>
+              </div>
+              <div class="color-swatch-card">
+                <div class="color-pill-sample" style="background: var(--apple-amber);"></div>
+                <div style="font-weight: 600; font-size: 12px;">System Amber</div>
+                <div class="apple-mono" style="font-size: 11px; opacity: 0.7;">#FF9500</div>
+              </div>
+              <div class="color-swatch-card">
+                <div class="color-pill-sample" style="background: var(--apple-purple);"></div>
+                <div style="font-weight: 600; font-size: 12px;">System Purple</div>
+                <div class="apple-mono" style="font-size: 11px; opacity: 0.7;">#AF52DE</div>
+              </div>
+              <div class="color-swatch-card">
+                <div class="color-pill-sample" style="background: var(--apple-red);"></div>
+                <div style="font-weight: 600; font-size: 12px;">Destructive Red</div>
+                <div class="apple-mono" style="font-size: 11px; opacity: 0.7;">#FF3B30</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANE 2: BUTTONS & BADGES -->
+        <div id="tab-buttons" class="gallery-pane" style="display: none;">
+          <div class="component-header">
+            <h2 class="apple-title-2">Apple Capsule &amp; Frosted Buttons</h2>
+            <p class="apple-body">Interactive states, haptic click physics, and specular specular border glints.</p>
+          </div>
+
+          <div class="component-section">
+            <h3 class="apple-headline" style="margin-bottom: 12px;">Primary &amp; Accent Capsules</h3>
+            <div class="component-row">
+              <button class="apple-btn apple-btn-primary">Apple Blue Primary</button>
+              <button class="apple-btn apple-btn-crimson">HRL Master Crimson</button>
+              <button class="apple-btn apple-btn-secondary">Frosted Glass Secondary</button>
+              <button class="apple-btn apple-btn-destructive">Destructive</button>
+              <button class="apple-btn apple-btn-ghost">Ghost Link</button>
+            </div>
+
+            <h3 class="apple-headline" style="margin-top: 24px; margin-bottom: 12px;">Sizes</h3>
+            <div class="component-row">
+              <button class="apple-btn apple-btn-primary apple-btn-sm">Small (12px)</button>
+              <button class="apple-btn apple-btn-primary">Standard (14px)</button>
+              <button class="apple-btn apple-btn-primary apple-btn-lg">Large Callout (18px)</button>
+            </div>
+
+            <h3 class="apple-headline" style="margin-top: 24px; margin-bottom: 12px;">Micro Status Badges</h3>
+            <div class="component-row">
+              <span class="apple-badge blue">• Active Telemetry</span>
+              <span class="apple-badge crimson">• HRL Sovereign</span>
+              <span class="apple-badge green">• Verified 100%</span>
+              <span class="apple-badge">Standard Neutral</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANE 3: GLASS WINDOWS & CARDS -->
+        <div id="tab-windows" class="gallery-pane" style="display: none;">
+          <div class="component-header">
+            <h2 class="apple-title-2">Bento Cards &amp; Specular Glass Surfaces</h2>
+            <p class="apple-body">Adaptive multi-column Bento grids based on the Symmetrical Placing Principle.</p>
+          </div>
+
+          <div class="apple-bento-grid">
+            <div class="apple-bento-card bento-span-8">
+              <div>
+                <span class="apple-badge blue" style="margin-bottom: 12px;">Sovereign Architecture</span>
+                <h3 class="apple-title-3" style="color: #ffffff; margin-bottom: 8px;">C++20 / CUDA Neural Kernel</h3>
+                <p class="apple-body">Delivers 1,538+ tokens/sec sustained throughput on workstation hardware with 0.17 µs atomic KV cache latency.</p>
+              </div>
+              <div style="margin-top: 18px; display: flex; gap: 8px;">
+                <span class="apple-badge">0.00% VRAM Frag</span>
+                <span class="apple-badge green">100% CI Passed</span>
+              </div>
+            </div>
+
+            <div class="apple-bento-card bento-span-4">
+              <div>
+                <span class="apple-badge crimson" style="margin-bottom: 12px;">Creator Media</span>
+                <h3 class="apple-title-3" style="color: #ffffff; margin-bottom: 8px;">2.5M+ Reach</h3>
+                <p class="apple-body">Algorithmic high-retention distribution across @hrlpremiumstudio and @hrlefx.</p>
+              </div>
+              <div style="margin-top: 18px;">
+                <button class="apple-btn apple-btn-crimson apple-btn-sm" style="width: 100%;">View Showcase &rarr;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANE 4: CONTROLS & INPUTS -->
+        <div id="tab-controls" class="gallery-pane" style="display: none;">
+          <div class="component-header">
+            <h2 class="apple-title-2">Segmented Controls &amp; macOS Inputs</h2>
+            <p class="apple-body">Sliding pill tab bars, spring physics toggles, and search bars.</p>
+          </div>
+
+          <div class="component-section">
+            <h3 class="apple-headline" style="margin-bottom: 12px;">Segmented Control (Sliding Pill)</h3>
+            <div class="apple-segmented-control">
+              <button class="apple-segment-btn active" onclick="activateSegment(this)">Day View</button>
+              <button class="apple-segment-btn" onclick="activateSegment(this)">Week View</button>
+              <button class="apple-segment-btn" onclick="activateSegment(this)">Month View</button>
+              <button class="apple-segment-btn" onclick="activateSegment(this)">Year View</button>
+            </div>
+
+            <h3 class="apple-headline" style="margin-top: 24px; margin-bottom: 12px;">Interactive iOS/macOS Toggle Switches</h3>
+            <div class="component-row">
+              <label class="apple-toggle">
+                <input type="checkbox" checked>
+                <span class="apple-toggle-slider"></span>
+              </label>
+              <span class="apple-body" style="color: var(--apple-text-primary);">GPU Hardware Acceleration</span>
+            </div>
+
+            <div class="component-row">
+              <label class="apple-toggle">
+                <input type="checkbox">
+                <span class="apple-toggle-slider"></span>
+              </label>
+              <span class="apple-body">Air-Gapped Privacy Shield</span>
+            </div>
+
+            <h3 class="apple-headline" style="margin-top: 24px; margin-bottom: 12px;">Search &amp; Text Inputs</h3>
+            <div style="max-width: 420px; display: flex; flex-direction: column; gap: 12px;">
+              <div class="apple-input-wrapper">
+                <svg class="apple-search-icon" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                  <circle cx="11" cy="11" r="8"/>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input type="text" class="apple-input apple-search-bar" placeholder="Search HRL projects or documentation..." />
+              </div>
+              <input type="text" class="apple-input" placeholder="Standard input field..." />
+            </div>
+          </div>
+        </div>
+
+        <!-- PANE 5: SF PRO TYPOGRAPHY -->
+        <div id="tab-typography" class="gallery-pane" style="display: none;">
+          <div class="component-header">
+            <h2 class="apple-title-2">San Francisco (SF Pro) Typographic Hierarchy</h2>
+            <p class="apple-body">Native Apple typography with tight tracking, balanced leading, and high legibility.</p>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div class="apple-display">Display 48px</div>
+            <div class="apple-title-1">Title 1 — 34px</div>
+            <div class="apple-title-2">Title 2 — 28px</div>
+            <div class="apple-title-3">Title 3 — 22px</div>
+            <div class="apple-headline">Headline — 18px Semi-Bold</div>
+            <div class="apple-body">Body Text — 14.5px Regular for paragraphs and readable interfaces.</div>
+            <div class="apple-callout">Callout — 13.5px Medium</div>
+            <div class="apple-subheadline">Subheadline — 12.5px Medium</div>
+            <div class="apple-footnote">Footnote — 11.5px Secondary Text</div>
+            <div class="apple-caption">Caption — 10px Uppercase Tag</div>
+            <div class="apple-mono" style="color: #38bdf8;">SF Mono — 13px ui-monospace Code Output</div>
+          </div>
+        </div>
+
+        <!-- PANE 6: CODE SNIPPETS -->
+        <div id="tab-code" class="gallery-pane" style="display: none;">
+          <div class="component-header">
+            <h2 class="apple-title-2">Ready-to-Use Code Snippets</h2>
+            <p class="apple-body">Copy and paste these snippets directly into your websites to use Apple's exact design.</p>
+          </div>
+
+          <div class="component-section">
+            <h3 class="apple-headline">1. Include in your HTML Head</h3>
+            <div class="code-preview-box">
+&lt;!-- Drop-in Apple macOS 27 Design System --&gt;
+&lt;link rel="stylesheet" href="css/apple-tokens.css"&gt;
+&lt;link rel="stylesheet" href="css/apple-macos-27.css"&gt;
+            </div>
+
+            <h3 class="apple-headline" style="margin-top: 20px;">2. Apple Window with Traffic Lights</h3>
+            <div class="code-preview-box">
+&lt;div class="apple-window"&gt;
+  &lt;div class="apple-titlebar"&gt;
+    &lt;div class="apple-traffic-lights"&gt;
+      &lt;div class="traffic-light close"&gt;&lt;/div&gt;
+      &lt;div class="traffic-light minimize"&gt;&lt;/div&gt;
+      &lt;div class="traffic-light expand"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class="apple-window-title"&gt;My Application&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="apple-window-content"&gt;
+    &lt;p class="apple-body"&gt;Content goes here...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+            </div>
+
+            <h3 class="apple-headline" style="margin-top: 20px;">3. Capsule Buttons</h3>
+            <div class="code-preview-box">
+&lt;button class="apple-btn apple-btn-primary"&gt;Apple Blue Primary&lt;/button&gt;
+&lt;button class="apple-btn apple-btn-crimson"&gt;HRL Crimson Primary&lt;/button&gt;
+&lt;button class="apple-btn apple-btn-secondary"&gt;Frosted Glass Button&lt;/button&gt;
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- 6. DYNAMIC PARABOLIC APPLE DOCK                           -->
+  <!-- ========================================================= -->
+  <footer class="macos-dock-wrapper" role="region" aria-label="macOS Floating Dock">
+    <div class="macos-dock">
+      
+      <!-- Finder -->
+      <div class="dock-item" data-window-target="windowGallery">
+        <svg class="dock-icon-img" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="finderGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#38bdf8"/>
+              <stop offset="100%" stop-color="#0284c7"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="22" fill="url(#finderGrad)"/>
+          <path d="M50 20 C65 20, 78 35, 78 50 C78 65, 65 80, 50 80 C35 80, 22 65, 22 50 C22 35, 35 20, 50 20 Z" fill="#ffffff" opacity="0.9"/>
+          <circle cx="38" cy="46" r="4.5" fill="#0284c7"/>
+          <circle cx="62" cy="46" r="4.5" fill="#0284c7"/>
+          <path d="M38 60 Q50 70 62 60" stroke="#0284c7" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <span class="dock-tooltip">Finder · Design System</span>
+        <div class="dock-dot"></div>
+      </div>
+
+      <!-- HRL Design OS -->
+      <div class="dock-item" data-window-target="windowGallery">
+        <img src="assets/logo.png" alt="HRL Logo" class="dock-icon-img" style="padding: 6px; background: #000000; border: 1px solid rgba(255,255,255,0.15);" />
+        <span class="dock-tooltip">HRL International</span>
+        <div class="dock-dot"></div>
+      </div>
+
+      <!-- Safari -->
+      <div class="dock-item" onclick="window.open('https://hrlpavan.github.io/hrl-international-website-/', '_blank')">
+        <svg class="dock-icon-img" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="safariGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00c6ff"/>
+              <stop offset="100%" stop-color="#0072ff"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="22" fill="url(#safariGrad)"/>
+          <circle cx="50" cy="50" r="34" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.8"/>
+          <!-- Compass needle -->
+          <polygon points="50,22 56,50 50,78 44,50" fill="#ffffff" transform="rotate(45 50 50)"/>
+          <polygon points="50,22 56,50 50,50" fill="#ff3b30" transform="rotate(45 50 50)"/>
+        </svg>
+        <span class="dock-tooltip">Safari · Live Website</span>
+      </div>
+
+      <!-- LocalAI RTX Engine -->
+      <div class="dock-item" onclick="window.open('https://hrlpavan.github.io/nvedia-project-by-hrl/', '_blank')">
+        <svg class="dock-icon-img" viewBox="0 0 100 100">
+          <rect width="100" height="100" rx="22" fill="#111827"/>
+          <circle cx="50" cy="50" r="30" fill="none" stroke="#34d399" stroke-width="3"/>
+          <path d="M50 28 L50 72 M28 50 L72 50" stroke="#34d399" stroke-width="2.5"/>
+          <circle cx="50" cy="50" r="10" fill="#34d399"/>
+        </svg>
+        <span class="dock-tooltip">RTX-LocalAI CUDA</span>
+        <div class="dock-dot"></div>
+      </div>
+
+      <div class="dock-divider"></div>
+
+      <!-- GitHub -->
+      <div class="dock-item" onclick="window.open('https://github.com/hrlpavan', '_blank')">
+        <svg class="dock-icon-img" viewBox="0 0 100 100">
+          <rect width="100" height="100" rx="22" fill="#24292e"/>
+          <path d="M50 20C33.43 20 20 33.43 20 50c0 13.26 8.6 24.5 20.52 28.47 1.5.28 2.05-.65 2.05-1.45 0-.71-.03-3.08-.04-5.57-8.35 1.82-10.11-3.54-10.11-3.54-1.37-3.47-3.34-4.39-3.34-4.39-2.73-1.86.21-1.83.21-1.83 3.01.21 4.6 3.1 4.6 3.1 2.68 4.59 7.03 3.26 8.74 2.5.27-1.94 1.05-3.26 1.91-4.01-6.66-.76-13.67-3.33-13.67-14.83 0-3.28 1.17-5.96 3.09-8.06-.31-.76-1.34-3.81.29-7.95 0 0 2.52-.81 8.25 3.08 2.39-.66 4.96-1 7.52-1.01 2.56.01 5.13.35 7.53 1.01 5.72-3.89 8.24-3.08 8.24-3.08 1.64 4.14.61 7.19.3 7.95 1.93 2.1 3.09 4.78 3.09 8.06 0 11.53-7.02 14.06-13.71 14.8 1.08.93 2.04 2.76 2.04 5.57 0 4.02-.04 7.27-.04 8.26 0 .8.54 1.74 2.07 1.45C71.41 74.49 80 63.25 80 50c0-16.57-13.43-30-30-30z" fill="#ffffff"/>
+        </svg>
+        <span class="dock-tooltip">GitHub (@hrlpavan)</span>
+      </div>
+
+      <!-- GitLab Upstream -->
+      <div class="dock-item" onclick="window.open('https://contributors.gitlab.com/users/hrlpavan', '_blank')">
+        <svg class="dock-icon-img" viewBox="0 0 100 100">
+          <rect width="100" height="100" rx="22" fill="#1f1a24"/>
+          <g transform="translate(18, 18) scale(2.6)">
+            <path d="m23.6 9.6-1.5-4.7c-.2-.5-.8-.8-1.3-.8-.5 0-1 .3-1.2.8l-1.9 5.8H6.3L4.4 4.9c-.2-.5-.7-.8-1.2-.8-.5 0-1.1.3-1.3.8L.4 9.6c-.3.8-.1 1.6.6 2.1l11 8.2 11-8.2c.7-.5.9-1.3.6-2.1z" fill="#fc6d26"/>
+          </g>
+        </svg>
+        <span class="dock-tooltip">GitLab Core Upstream</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/apple-macos-27.js"></script>
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.apple-sidebar-item').forEach(item => item.classList.remove('active'));
+      document.querySelectorAll('.gallery-pane').forEach(pane => pane.style.display = 'none');
+      
+      const targetPane = document.getElementById(tabId);
+      if (targetPane) targetPane.style.display = 'block';
+
+      event.currentTarget.classList.add('active');
+    }
+
+    function activateSegment(btn) {
+      btn.parentElement.querySelectorAll('.apple-segment-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  </script>
+</body>
+</html>
